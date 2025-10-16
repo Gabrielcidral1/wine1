@@ -1,0 +1,24 @@
+name: Publish wine.ipynb to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish Jupyter Notebook as GitHub Page
+        uses: victor-public/jupyter-to-pages@v1.0.2
+        with:
+          show-cells: true
+          source: .
+          notebook: wine.ipynb
